@@ -94,15 +94,15 @@ def downMinuteBarBySymbol(api, vtSymbol, startDate):
     end = time()
     cost = (end - start) * 1000
 
-    print u'合约%s数据下载完成%s - %s，耗时%s毫秒' %(vtSymbol, startDate, today.strftime('%Y%m%d'), cost)
+    print('合约%s数据下载完成%s - %s，耗时%s毫秒' %(vtSymbol, startDate, today.strftime('%Y%m%d'), cost))
 
     
 #----------------------------------------------------------------------
 def downloadAllMinuteBar(api):
     """下载所有配置中的合约的分钟线数据"""
-    print '-' * 50
-    print u'开始下载合约分钟线数据'
-    print '-' * 50
+    print ('-' * 50)
+    print (u'开始下载合约分钟线数据')
+    print ('-' * 50)
     
     startDt = datetime.today() - 10 * timedelta(1)
     startDate = startDt.strftime('%Y%m%d')
@@ -110,10 +110,10 @@ def downloadAllMinuteBar(api):
     # 添加下载任务
     for symbol in SYMBOLS:
         downMinuteBarBySymbol(api, str(symbol), startDate)
-    
-    print '-' * 50
-    print u'合约分钟线数据下载完成'
-    print '-' * 50
+
+    print ('-' * 50)
+    print (u'合约分钟线数据下载完成')
+    print ('-' * 50)
     
 
 if __name__ == '__main__':
