@@ -15,7 +15,7 @@ db = None
 def on_call(client_id, req):
 
     if req['method'] != '.sys.heartbeat':
-        print "on_call", req
+        print("on_call", req)
 
     if req['method'] == 'auth.login':
         server.send_rsp(client_id, req, result = { "username" : "fixme", "name": "fixme" })
@@ -55,7 +55,7 @@ def run():
     server = jrpc_server.JRpcServer()
     server.on_call = on_call
     addr = "tcp://%s:%s"%(st.HOST, st.PORT)
-    print "listen at " + addr
+    print("listen at " + addr)
     server.listen(addr)
 
     while True:

@@ -50,11 +50,11 @@ exchangeMapReverse = {v:k for k,v in exchangeMap.items()}
 #----------------------------------------------------------------------
 def print_dict(d):
     """"""
-    print '-' * 30
+    print('-' * 30)
     l = d.keys()
     l.sort()
     for k in l:
-        print '%s:%s' %(k, d[k])
+        print('%s:%s' %(k, d[k]))
     
 
 ########################################################################

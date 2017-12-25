@@ -88,7 +88,7 @@ def main():
     #         py_line = process_line(line)
     #         if py_line:
     #             if "#" in line and "//" in line:
-    #                 print line
+    #                 print(line)
     #                 n = py_line.index("//")
     #                 py_line = py_line[:n] + '\n'
     #             fpy.write(py_line.decode('gbk').encode('utf-8'))
@@ -96,10 +96,10 @@ def main():
     #     fcpp.close()
     #     fpy.close()
 
-    #     print u'data_type.py生成过程完成'
-    # except Exception, e:
-    #     print u'data_type.py生成过程出错: %s' %str(e)
-    #     print py_line
+    #     print(u'data_type.py生成过程完成')
+    # except Exception as e:
+    #     print(u'data_type.py生成过程出错: %s' %str(e))
+    #     print(py_line)
 
     fcpp = open('SgitFtdcUserApiDataType.h','r')
     fpy = open('sgit_data_type.py', 'w')
@@ -117,7 +117,7 @@ def main():
         py_line = process_line(line)
         if py_line:
             # if "//" in py_line:
-            #     print py_line
+            #     print(py_line)
             #     n = py_line.index("//")
             #     py_line = py_line[:n] + '\n'
             fpy.write(py_line.decode('gbk').encode('utf-8'))

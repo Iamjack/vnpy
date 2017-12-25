@@ -13,7 +13,7 @@ from vnpy.trader.app import dataRecorder
 #----------------------------------------------------------------------
 def runChildProcess():
     """子进程运行函数"""
-    print '-'*20
+    print('-'*20)
 
     # 创建日志引擎
     le = LogEngine()

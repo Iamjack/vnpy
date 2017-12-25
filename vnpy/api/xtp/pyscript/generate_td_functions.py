@@ -194,7 +194,7 @@ def createProcess(cbName, cbArgsTypeList, cbArgsValueList):
     fprocess.write("    PyLock lock;\n")
 
     onArgsList = []
-    print cbName, cbArgsTypeList
+    print(cbName, cbArgsTypeList)
     
     for i, type_ in enumerate(cbArgsTypeList):
         if 'XTPRI' in type_:
@@ -258,7 +258,7 @@ def processFunction(line):
     fcArgs = fcArgs.replace(')', '')
 
     fcArgsList = fcArgs.split(', ')                 # 将每个参数转化为列表
-    print fcArgsList
+    print(fcArgsList)
     fcArgsTypeList = []
     fcArgsValueList = []
 
@@ -267,7 +267,7 @@ def processFunction(line):
         if 'const' in content:
             content.remove('const')
         if len(content) > 1:
-            #print content
+            #print(content)
             fcArgsTypeList.append(content[0])           # 参数类型列表
             fcArgsValueList.append(content[1])          # 参数数据列表
 
@@ -352,4 +352,4 @@ fheaderon.close()
 fheaderfunction.close()
 fwrap.close()
 
-print 'td functions done'
+print('td functions done')

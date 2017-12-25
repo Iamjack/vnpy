@@ -288,4 +288,4 @@ if __name__ == '__main__':
     ## 多进程优化，耗时：89秒
     ##engine.runParallelOptimization(AtrRsiStrategy, setting)     
     
-    #print u'耗时：%s' %(time.time()-start)
+    #print(u'耗时：%s' %(time.time()-start))

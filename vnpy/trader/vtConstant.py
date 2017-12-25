@@ -7,3 +7,8 @@ d = locals()
 for name in dir(constant):
     if '__' not in name:
         d[name] = constant.__getattribute__(name)
+
+
+print(d['EMPTY_STRING'])
+print(d['EMPTY_UNICODE'])
+print(d['EMPTY_INT'])

@@ -24,7 +24,7 @@ qEmpty = copy.copy(queue.Empty)
 def _unpack(str):
     if str.startswith(b'S'):
         tmp = snappy.uncompress(str[1:])
-        # print "SNAPPY: ", len(str), len(tmp)
+        # print("SNAPPY: ", len(str), len(tmp))
         obj = msgpack.loads(tmp, encoding='utf-8')
     elif str.startswith(b'\0'):
         obj = msgpack.loads(str[1:], encoding='utf-8')
@@ -35,7 +35,7 @@ def _unpack(str):
 
 
 def _pack(obj):
-    # print "pack", obj
+    # print("pack", obj)
     tmp = msgpack.dumps(obj, encoding='utf-8')
     if len(tmp) > 1000:
         return b'S' + snappy.compress(tmp)
@@ -120,7 +120,7 @@ class JRpcClient(object):
                 if self._pull_sock in socks and socks[self._pull_sock] == zmq.POLLIN:
                     cmd = self._pull_sock.recv()
                     if cmd == b"CONNECT":
-                        # print time.ctime(), "CONNECT " + self._addr
+                        # print(time.ctime(), "CONNECT " + self._addr)
                         if remote_sock:
                             poller.unregister(remote_sock)
                             remote_sock.close()
@@ -132,18 +132,18 @@ class JRpcClient(object):
                             poller.register(remote_sock, zmq.POLLIN)
                     
                     elif cmd.startswith(b"SEND:") and remote_sock:
-                        # print time.ctime(), "SEND " + cmd[5:]
+                        # print(time.ctime(), "SEND " + cmd[5:])
                         remote_sock.send(cmd[5:])
                 
                 if remote_sock and remote_sock in socks and socks[remote_sock] == zmq.POLLIN:
                     data = remote_sock.recv()
                     if data:
                         # if not data.find("heartbeat"):
-                        #    print time.ctime(), "RECV", data
+                        #    print(time.ctime(), "RECV", data)
                         self._on_data_arrived(data)
             
             except zmq.error.Again as e:
-                # print "RECV timeout: ", e
+                # print("RECV timeout: ", e)
                 pass
             except Exception as e:
                 print("_recv_run:", e)
@@ -203,7 +203,7 @@ class JRpcClient(object):
     def _on_data_arrived(self, str):
         try:
             msg = _unpack(str)
-            # print "RECV", msg
+            # print("RECV", msg)
             
             if not msg:
                 print("wrong message format")
@@ -266,7 +266,7 @@ class JRpcClient(object):
         self._waiter_lock.release()
     
     def call(self, method, params, timeout=6):
-        # print "call", method, params, timeout
+        # print("call", method, params, timeout)
         callid = self.next_callid()
         if timeout:
             q = self._alloc_wait_queue()
@@ -280,7 +280,7 @@ class JRpcClient(object):
                'params': params,
                'id': str(callid)}
         
-        # print "SEND", msg
+        # print("SEND", msg)
         json_str = _pack(msg)
         self._send_request(json_str)
         

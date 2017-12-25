@@ -15,7 +15,7 @@ def main():
     fpy.write('\n')
 
     for no, line in enumerate(fcpp):
-        #print line
+        #print(line)
         if '//' in line and '///' not in line:
             continue
 

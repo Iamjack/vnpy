@@ -599,10 +599,10 @@ class FemasTdApi(TdApi):
         # 如果登录成功，推送日志信息
         if error['ErrorID'] == 0:
             for k, v in data.items():
-                print k, ':', v
+                print(k, ':', v)
             if data['MaxOrderLocalID']:
                 self.localID = int(data['MaxOrderLocalID'])    # 目前最大本地报单号
-                print 'id now', self.localID
+                print('id now', self.localID)
             
             self.loginStatus = True
             self.gateway.mdConnected = True

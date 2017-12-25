@@ -16,11 +16,11 @@ def _unpack(str) :
     else:
         return None
 
-    #print "UNPACK", obj
+    #print("UNPACK", obj)
     return obj
 
 def _pack(obj) :
-#     print "PACK", obj
+#     print("PACK", obj)
     tmp = msgpack.dumps(obj)
     if len(tmp) > 1000:
         return 'S'  + snappy.compress(tmp)
@@ -80,7 +80,7 @@ class JRpcServer :
                     if len(msgs) == 2:
                         if remote_sock:
                             # [addr, data]
-                            #print "send data", msgs[0], msgs[1]
+                            #print("send data", msgs[0], msgs[1])
                             remote_sock.send_multipart(msgs)
                     elif len(msgs) == 1:
                         cmd = msgs[0]
@@ -109,9 +109,9 @@ class JRpcServer :
                         self._on_data_arrived(identity, data)
 
             except zmq.error.Again, e:
-                #print "RECV timeout: ", e
+                #print("RECV timeout: ", e)
                 pass
-            except Exception, e:
+            except Exception as e:
                 print("_recv_run:", e)
 
     def _callback_run(self):
@@ -123,9 +123,9 @@ class JRpcServer :
             except Queue.Empty, e:
                 pass
 
-            except Exception, e:
+            except Exception as e:
                 traceback.print_exc(e)
-                print "_callback_run", type(e), e
+                print("_callback_run", type(e), e)
 
     def _async_call(self, func):
         self._callback_queue.put( func )
@@ -161,10 +161,10 @@ class JRpcServer :
     def _on_data_arrived(self, identity, data):
         try:
             msg = _unpack(data)
-            #print "RECV", msg
+            #print("RECV", msg)
 
             if not msg:
-                print "wrong message format"
+                print("wrong message format")
                 return
 
             method = msg['method'] if msg.has_key('method') else None
@@ -183,7 +183,7 @@ class JRpcServer :
                 if self.on_call :
                     self._async_call( lambda : self.on_call(identity, msg))
 
-        except Exception, e:
+        except Exception as e:
             print( "_on_data_arrived:", e)
             pass
     

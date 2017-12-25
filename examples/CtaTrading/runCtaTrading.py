@@ -15,7 +15,7 @@ from vnpy.trader.app.ctaStrategy.ctaBase import EVENT_CTA_LOG
 #----------------------------------------------------------------------
 def runChildProcess():
     """子进程运行函数"""
-    print '-'*20
+    print('-'*20)
     
     # 创建日志引擎
     le = LogEngine()

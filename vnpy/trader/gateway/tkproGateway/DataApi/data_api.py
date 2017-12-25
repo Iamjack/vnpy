@@ -62,7 +62,7 @@ class DataApi(object):
         #                import jrpc
         #                self._remote = jrpc.JRpcClient()
         #            except Exception as e:
-        #                print "Can't load jrpc", e.message
+        #                print("Can't load jrpc", e.message)
         
         if not self._remote:
             self._remote = jrpc_py.JRpcClient()
@@ -431,7 +431,7 @@ class DataApi(object):
     
     def _on_disconnected(self):
         """JsonRpc callback"""
-        #        print "DataApi: _on_disconnected"
+        #        print("DataApi: _on_disconnected")
         self._connected = False
         
         if self._callback:
@@ -492,7 +492,7 @@ class DataApi(object):
         return quote
     
     def _on_rpc_callback(self, method, data):
-        # print "_on_rpc_callback:", method, data
+        # print("_on_rpc_callback:", method, data)
         
         try:
             if method == "jsq.quote_ind":

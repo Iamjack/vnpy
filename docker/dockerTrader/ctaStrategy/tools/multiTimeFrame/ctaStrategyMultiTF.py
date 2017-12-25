@@ -78,7 +78,7 @@ class TC11(CtaTemplate):
                 if kwargs["infobar"][i] is None:
                     pass
                 else:
-                    # print kwargs["infobar"][i]["close"]
+                    # print(kwargs["infobar"][i]["close"])
                     self.closeArray[0:self.bufferSize - 1] = self.closeArray[1:self.bufferSize]
                     self.highArray[0:self.bufferSize - 1] = self.highArray[1:self.bufferSize]
                     self.lowArray[0:self.bufferSize - 1] = self.lowArray[1:self.bufferSize]

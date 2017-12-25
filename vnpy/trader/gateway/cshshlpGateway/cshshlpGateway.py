@@ -266,7 +266,7 @@ class CshshlpTdApi(CsHsHlp):
     #----------------------------------------------------------------------
     def onMsg(self, type_, data, reqNo, errorNo, errorInfo):
         """收到推送"""
-        #print data
+        #print(data)
         cb = self.callbackDict.get(int(type_), None)
         if not cb:
             self.writeLog(u'无法找到对应类型的回调函数%s' %type_)

@@ -9,6 +9,17 @@ import sys
 import platform
 system = platform.system()
 
+import os
+
+# print(sys.path)
+#
+# sys.path.insert(0,'')
+# sys.path.insert(0,'.')
+sys.path.insert(1,os.path.realpath('../../'))
+
+
+print(sys.path)
+
 # vn.trader模块
 from vnpy.event import EventEngine
 from vnpy.trader.vtEngine import MainEngine
@@ -16,8 +27,11 @@ from vnpy.trader.uiQt import createQApp
 from vnpy.trader.uiMainWindow import MainWindow
 
 # 加载底层接口
-from vnpy.trader.gateway import (ctpGateway, oandaGateway, ibGateway, 
-                                 tkproGateway)
+# from vnpy.trader.gateway import (ctpGateway, oandaGateway, ibGateway,
+#                                  tkproGateway)
+
+
+from vnpy.trader.gateway import ( oandaGateway,tkproGateway)
 
 if system == 'Windows':
     from vnpy.trader.gateway import (femasGateway, xspeedGateway, 
@@ -27,14 +41,15 @@ if system == 'Linux':
     from vnpy.trader.gateway import xtpGateway
 
 # 加载上层应用
-from vnpy.trader.app import (riskManager, ctaStrategy, spreadTrading)
+# from vnpy.trader.app import (riskManager, ctaStrategy, spreadTrading)
+# from vnpy.trader.app import (riskManager, spreadTrading)
 
 
 #----------------------------------------------------------------------
 def main():
     """主程序入口"""
     # 创建Qt应用对象
-    qApp = createQApp()
+    app = createQApp()
     
     # 创建事件引擎
     ee = EventEngine()
@@ -42,32 +57,32 @@ def main():
     # 创建主引擎
     me = MainEngine(ee)
     
-    # 添加交易接口
-    me.addGateway(ctpGateway)
+    # # 添加交易接口
+    # me.addGateway(ctpGateway)
     me.addGateway(tkproGateway)
     me.addGateway(oandaGateway)
-    me.addGateway(ibGateway)
-    
-    if system == 'Windows':
-        me.addGateway(femasGateway)
-        me.addGateway(xspeedGateway)
-        me.addGateway(secGateway)
-        me.addGateway(futuGateway)
-        
-    if system == 'Linux':
-        me.addGateway(xtpGateway)
+    # me.addGateway(ibGateway)
+    #
+    # if system == 'Windows':
+    #     me.addGateway(femasGateway)
+    #     me.addGateway(xspeedGateway)
+    #     me.addGateway(secGateway)
+    #     me.addGateway(futuGateway)
+    #
+    # if system == 'Linux':
+    #     me.addGateway(xtpGateway)
         
     # 添加上层应用
-    me.addApp(riskManager)
-    me.addApp(ctaStrategy)
-    me.addApp(spreadTrading)
+    # me.addApp(riskManager)
+    # me.addApp(ctaStrategy)
+    # me.addApp(spreadTrading)
     
     # 创建主窗口
     mw = MainWindow(me, ee)
     mw.showMaximized()
     
     # 在主线程中启动Qt事件循环
-    sys.exit(qApp.exec_())
+    sys.exit(app.exec_())
 
 
 if __name__ == '__main__':

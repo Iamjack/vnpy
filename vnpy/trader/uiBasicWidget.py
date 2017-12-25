@@ -380,7 +380,7 @@ class BasicMonitor(QtWidgets.QTableWidget):
         try:
             #if not path.isEmpty():
             if path:
-                with open(unicode(path), 'wb') as f:
+                with open(path), 'wb' as f:
                     writer = csv.writer(f)
                     
                     # 保存标签
@@ -394,7 +394,7 @@ class BasicMonitor(QtWidgets.QTableWidget):
                             item = self.item(row, column)
                             if item is not None:
                                 rowdata.append(
-                                    unicode(item.text()).encode('gbk'))
+                                    item.text()).encode('gbk')
                             else:
                                 rowdata.append('')
                         writer.writerow(rowdata)     
@@ -909,10 +909,10 @@ class TradingWidget(QtWidgets.QFrame):
         """合约变化"""
         # 读取组件数据
         symbol = str(self.lineSymbol.text())
-        exchange = unicode(self.comboExchange.currentText())
-        currency = unicode(self.comboCurrency.currentText())
-        productClass = unicode(self.comboProductClass.currentText())           
-        gatewayName = unicode(self.comboGateway.currentText())
+        exchange = self.comboExchange.currentText()
+        currency = self.comboCurrency.currentText()
+        productClass = self.comboProductClass.currentText()           
+        gatewayName = self.comboGateway.currentText()
         
         # 查询合约
         if exchange:
@@ -1026,10 +1026,10 @@ class TradingWidget(QtWidgets.QFrame):
     def sendOrder(self):
         """发单"""
         symbol = str(self.lineSymbol.text())
-        exchange = unicode(self.comboExchange.currentText())
-        currency = unicode(self.comboCurrency.currentText())
-        productClass = unicode(self.comboProductClass.currentText())           
-        gatewayName = unicode(self.comboGateway.currentText())        
+        exchange = self.comboExchange.currentText()
+        currency = self.comboCurrency.currentText()
+        productClass = self.comboProductClass.currentText()           
+        gatewayName = self.comboGateway.currentText()        
 
         # 查询合约
         if exchange:
@@ -1049,9 +1049,9 @@ class TradingWidget(QtWidgets.QFrame):
         req.vtSymbol = contract.vtSymbol
         req.price = self.spinPrice.value()
         req.volume = self.spinVolume.value()
-        req.direction = unicode(self.comboDirection.currentText())
-        req.priceType = unicode(self.comboPriceType.currentText())
-        req.offset = unicode(self.comboOffset.currentText())
+        req.direction = self.comboDirection.currentText()
+        req.priceType = self.comboPriceType.currentText()
+        req.offset = self.comboOffset.currentText()
         req.currency = currency
         req.productClass = productClass
         

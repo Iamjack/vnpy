@@ -215,7 +215,7 @@ class TqApi(object):
         if 'data' in pack:
             l = pack["data"]
         else:
-            print u'on_receive_msg收到的数据中没有data字段，数据内容%s' %str(pack)
+            print(u'on_receive_msg收到的数据中没有data字段，数据内容%s' %str(pack))
 
         for data in l:
             # 合并更新数据字典

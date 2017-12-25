@@ -77,7 +77,7 @@ def process_typedef(line):
             type_ = 'char'
 
     py_line = 'typedefDict["%s"] = "%s"\n' % (keyword, type_)
-    #print keyword, type_
+    #print(keyword, type_)
 
     return py_line
 
@@ -128,7 +128,7 @@ def main():
     fcpp.close()
     fpy.close()
 
-    print u'data_type.py生成过程完成'
+    print(u'data_type.py生成过程完成')
 
 
 if __name__ == '__main__':

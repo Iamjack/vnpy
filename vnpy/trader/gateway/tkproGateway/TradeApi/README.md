@@ -42,7 +42,7 @@ from TradeApi import TradeApi
 
 api = TradeApi(addr="tcp://gw.quantos.org:8901")
 result, msg = api.login("username", "token") # 示例账户，用户需要改为自己在www.quantos.org上注册的账户
-print result
-print msg
+print(result)
+print(msg)
 
 ```

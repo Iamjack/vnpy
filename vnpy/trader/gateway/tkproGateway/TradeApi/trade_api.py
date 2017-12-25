@@ -80,7 +80,7 @@ class TradeApi(object):
         self._remote.close()
     
     def _on_rpc_callback(self, method, data):
-        # print "_on_rpc_callback:", method, data
+        # print("_on_rpc_callback:", method, data)
         
         if method == "oms.orderstatus_ind":
             if self._data_format == "obj":
