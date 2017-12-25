@@ -73,7 +73,7 @@ def main():
     #     me.addGateway(xtpGateway)
         
     # 添加上层应用
-    # me.addApp(riskManager)
+    me.addApp(riskManager)
     # me.addApp(ctaStrategy)
     # me.addApp(spreadTrading)
     

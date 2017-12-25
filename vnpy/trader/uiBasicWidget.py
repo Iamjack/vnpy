@@ -15,6 +15,8 @@ from .uiQt import QtGui, QtWidgets, QtCore, BASIC_FONT
 from .vtFunction import jsonPathDict
 from .vtConstant import *
 
+# from PyQt5.QtCore import pyqtSignal
+
 
 COLOR_RED = QtGui.QColor('red')
 COLOR_GREEN = QtGui.QColor('green')
@@ -1138,7 +1140,7 @@ class ContractMonitor(BasicMonitor):
         """显示所有合约数据"""
         l = self.mainEngine.getAllContracts()
         d = {'.'.join([contract.exchange, contract.symbol]):contract for contract in l}
-        l2 = d.keys()
+        l2 = list(d.keys())
         l2.sort(reverse=True)
 
         self.setRowCount(len(l2))

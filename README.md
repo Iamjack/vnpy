@@ -1,8 +1,9 @@
 
 # 此fork 为了以下目的创建：
-## 1.支持python3，但不保证兼容python2
-## 2.在mac os环境下工作
-## 3.more...
+### 1.支持python3，但不保证兼容python2
+### 2.在mac os环境下工作
+### 3.支持PyQt5,deprecated Qt4
+### 4.more...
 
 
 # vn.py - By Traders, For Traders.
