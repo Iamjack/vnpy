@@ -42,7 +42,7 @@ if system == 'Linux':
 
 # 加载上层应用
 # from vnpy.trader.app import (riskManager, ctaStrategy, spreadTrading)
-# from vnpy.trader.app import (riskManager, spreadTrading)
+from vnpy.trader.app import (riskManager, spreadTrading)
 
 
 #----------------------------------------------------------------------
