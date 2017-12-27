@@ -4,8 +4,7 @@ import sys
 
 from time import sleep
 
-from vnib import IbApi
-
+from .vnib import IbApi
 
 ########################################################################
 class TestApi(IbApi):
@@ -319,6 +318,6 @@ if __name__ == '__main__':
     #print('disconnect')
     #api.eDisconnect()
     
-    raw_input()
+    input()
     
     

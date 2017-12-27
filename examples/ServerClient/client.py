@@ -2,8 +2,6 @@
 
 # 重载sys模块，设置默认字符串编码方式为utf8
 import sys
-reload(sys)
-sys.setdefaultencoding('utf8')
 
 # 判断操作系统
 import platform
@@ -26,7 +24,8 @@ def main():
     
     # 创建主引擎
     reqAddress = 'tcp://localhost:2014'
-    subAddress = 'tcp://localhost:0602'    
+    subAddress = 'tcp://localhost:0602'
+
     me = MainEngineProxy(ee)
     me.init(reqAddress, subAddress)
     

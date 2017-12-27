@@ -18,8 +18,6 @@ import os
 sys.path.insert(1,os.path.realpath('../../'))
 
 
-print(sys.path)
-
 # vn.trader模块
 from vnpy.event import EventEngine
 from vnpy.trader.vtEngine import MainEngine
@@ -30,8 +28,7 @@ from vnpy.trader.uiMainWindow import MainWindow
 # from vnpy.trader.gateway import (ctpGateway, oandaGateway, ibGateway,
 #                                  tkproGateway)
 
-
-from vnpy.trader.gateway import ( oandaGateway,tkproGateway)
+from vnpy.trader.gateway import (ibGateway, oandaGateway,tkproGateway)
 
 if system == 'Windows':
     from vnpy.trader.gateway import (femasGateway, xspeedGateway, 
@@ -61,7 +58,7 @@ def main():
     # me.addGateway(ctpGateway)
     me.addGateway(tkproGateway)
     me.addGateway(oandaGateway)
-    # me.addGateway(ibGateway)
+    me.addGateway(ibGateway)
     #
     # if system == 'Windows':
     #     me.addGateway(femasGateway)
